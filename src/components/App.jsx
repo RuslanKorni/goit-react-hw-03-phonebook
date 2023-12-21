@@ -25,6 +25,23 @@ class App extends Component {
     filter: '',
   };
 
+componentDidMount () {
+  const contacts = localStorage.getItem('contacts');
+  const parsedContacts = JSON.parse(contacts);
+  if(parsedContacts) {
+    this.setState({
+      contacts: parsedContacts
+    })
+  }
+}; //! В цоьому компоненті життєвого циклю я можу прочитати дані з локального сховіща
+
+  componentDidUpdate (prevProps, prevState ) {
+const {contacts} = this.state;
+if(contacts !== prevState.contacts) {
+localStorage.setItem('contacts', JSON.stringify(contacts));
+}
+  }
+
   addContact = ({ name, number }) => {
     const normalizedName = name.toLowerCase();
 
