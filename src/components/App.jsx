@@ -28,12 +28,13 @@ class App extends Component {
   addContact = ({ name, number }) => {
     const normalizedName = name.toLowerCase();
 
-    let isAdded = false;
-    this.state.contacts.some(el => {
-      if (el.name.toLowerCase() === normalizedName) {
-        isAdded = true;
-      }
-    });
+    const isAdded = this.state.contacts.some(el => el.name.toLowerCase() === normalizedName);
+    // let isAdded = false;
+    // this.state.contacts.some(el => {
+    //   if (el.name.toLowerCase() === normalizedName) {
+    //    return isAdded = true;
+    //   }
+    // });
 
     if (isAdded) {
       return toast.error(`${name}: is already in contacts`, notifyOptions);
