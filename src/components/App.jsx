@@ -32,9 +32,7 @@ class App extends Component {
     this.state.contacts.some(el => {
       if (el.name.toLowerCase() === normalizedName) {
         isAdded = true;
-        return true;
       }
-      return false;
     });
 
     if (isAdded) {
